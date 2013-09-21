@@ -1,5 +1,5 @@
 
-{% extends "admin/base_site.html" %}
+{% extends "base_site.html" %}
 {% load i18n admin_static %}
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />{% endblock %}
@@ -14,4 +14,5 @@
 
 {% block content %}
 <p>{% trans "Logged out" %}</p>
+<a href="/rentsystem/accounts/login">Login</a><br><br>
 {% endblock %}

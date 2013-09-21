@@ -13,6 +13,7 @@ from django.db.models.signals import post_save
 #	Name=models.CharField(max_length=100)
 
 class Room(models.Model):
+	Id = models.IntegerField(primary_key=True)
 	Type = models.IntegerField(max_length=2)
 	rent = models.IntegerField(max_length=100)
 	on_rent = models.IntegerField(max_length=2)
@@ -28,6 +29,17 @@ class Renter(models.Model):
 	start_date = models.DateField()
 	def __unicode__(self):
 		return self.name
+
+class RenterForm(ModelForm):
+	class Meta :
+		model = Renter
+		exclude= ['photo']	
+		widgets = {
+		'room' : TextInput(attrs={'size':100}),
+		'name' : TextInput(attrs={'size':50}),
+		'address' : TextInput(attrs={'size':100}),
+		'phone_no' : TextInput(attrs={'size':10}),
+                  }
 
 class Accounts(models.Model):
 	renter_id = models.ForeignKey(Renter)

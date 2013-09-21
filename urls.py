@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 #            { 'template': 'index.html' }, 'index'),
     # Examples:
     (r'^$', 'RentSystem.Rent.views.index'),
+	(r'^main/', include('RentSystem.Rent.urls')),
    # (r'^time_schedule/', include('Timelog.time_schedule.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^accounts/', include('registration.urls')),

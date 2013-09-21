@@ -10,7 +10,51 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block content %}
-<h1>Administration</h1>
+<h1>Home</h1>
+<div id="content-main">
 
 
+    
+        <div class="module">
+        <table>
+        <caption>
+            <aclass="section" title="Main">
+                {% blocktrans  %}Main{% endblocktrans %}</a>
+		</caption>
+			<tr>
+			<th><a href="rentsystem/main/checkin">Check In</a> <br><br> Check Out</th>
+            </tr>
+        </table>
+        </div>
+
+		<div class="module">
+        <table>
+        <caption>
+            <aclass="section" title="Accounts">
+                {% blocktrans  %}Accounts{% endblocktrans %}</a>
+		</caption>
+			<tr>
+			<th>Collect Ammount <br><br> Ammount Not Recieved</th>
+            </tr>
+        </table>
+        </div>
+		
+
+		<div class="module">
+        <table>
+        <caption>
+            <aclass="section" title="Profile">
+                {% blocktrans  %}Profile{% endblocktrans %}</a>
+		</caption>
+			<tr>
+			<th><a href="rentsystem/main/viewprofile">View Profile</a> <br><br> Edit Profile</th>
+            </tr>
+        </table>
+        </div>
+
+
+
+</div>
 {% endblock %}
+
+
