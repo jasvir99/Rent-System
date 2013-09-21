@@ -1,0 +1,33 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+<div>
+   {% block header %}
+	<link href="/var/www/media/time_mangement/style3.css"" media="screen" rel="stylesheet" type="text/css" />
+	{% if user.is_authenticated %}<a href="/menu">{% else %}<a href ="/schedule">{% endif %}{% trans "Home" %}</a> | 
+
+	{% if user.is_authenticated %}
+	<font color="white">{% trans "Logged in" %}: {{ user.username }} </font>
+	(<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a> | 
+	<a href="{% url 'auth_password_change' %}">{% trans "Change password" %}</a>)
+	{% else %}
+	<a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
+	{% endif %}
+	
+	<h2 class="changeBlue">Select your Category</h2>
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+    <form action="" method="post">
+	{% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+	{% endblock %}
+        
+</div>
+

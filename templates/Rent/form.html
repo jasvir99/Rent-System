@@ -1,0 +1,23 @@
+<html>
+ <head>
+    <title>Aform2</title>
+ </head>
+ <body>
+ </style>
+    <h1>Student DMC Details</h1>
+ <br>
+     {% if form.errors %}
+         <p style="color: red;">
+             Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+     {% endif %}
+     <h2> Fill Data
+     <form action="" method="post">
+	 {% csrf_token %}
+         <table >
+            {{ form.as_table }}            
+         </table>
+        <input type="submit" value="Submit">
+    </form>
+ </body>
+ </html>
