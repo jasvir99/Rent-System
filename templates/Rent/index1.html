@@ -1,4 +1,4 @@
-{% extends "base_site.html" %}
+{% extends "base_site1.html" %}
 {% load i18n admin_static %}
 
 {% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
@@ -11,7 +11,7 @@
 
 {% block content %}
 <h1>Welcome</h1>
-<a href="accounts/login">Login</a><br><br>
-<a href="accounts/register">Register</a>  
+<a href="/rentsystem/accounts/login">Login</a><br><br>
+<a href="/rentsystem/accounts/register">Register</a>  
 
 {% endblock %}

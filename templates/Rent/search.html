@@ -21,27 +21,24 @@
   {% if query %}
     
 <div class="module">
-        <table  border='0'>
+        <table  border='1'>
         <caption>
             <aclass="section" title="Main">
-                {% blocktrans  %}Results for "{{ query|escape }}":{% endblocktrans %}</a>
+                {% blocktrans  %}Results :{% endblocktrans %}</a>
 		</caption>
 <tr>
 		<th>Sr.No </th>
 		<th>Name</th>
-                <th>Address</th>
-                <th>Phone No</th>
-		<th>Your Activity</th>
+		<th>Room No.</th>
+		<th>Options</th>
 	</tr>
     {% if results %}
       
       {% for client in results %}
 	<tr>
 	<td>{{forloop.counter}}</td>
-        <td> {{ client.name }} 
-        <td> {{client.address}}</td>
-        
-        <td>{{client.phone_no}}</td>
+        <td> {{ client.name }} </td>
+		<td> {{ client.room_id }} </td>
 		<td><a href="/rentsystem/main/profile/?id={{ client.id }}">Full Profile</a></td>
         <!--
 
@@ -59,6 +56,7 @@
     {% endif %}
 </table>
   {% endif %}
+</div>
 </body>
 </html>
 {% endblock %}

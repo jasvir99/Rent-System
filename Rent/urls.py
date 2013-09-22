@@ -7,4 +7,6 @@ urlpatterns = patterns('RentSystem.Rent.views',
 		(r'^checkin/$', 'checkIn'),
 		(r'^viewprofile/$', 'search'),
 		(r'^profile/$', 'profile'),
+		(r'^available/$', 'available'),
+		(r'^payment/$', 'payment'),
 )

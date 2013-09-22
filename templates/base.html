@@ -29,9 +29,9 @@
             <strong>{% filter force_escape %}{% firstof user.get_short_name user.get_username %}{% endfilter %}</strong>.
             {% block userlinks %}
                 {% if user.has_usable_password %}
-                <a href="accounts/password/change">Change password</a> /
+                <a href="rentsystem/accounts/password/change">Change password</a> /
                 {% endif %}
-                <a href="accounts/logout">{% trans 'Log out' %}</a>
+                <a href="/rentsystem/accounts/logout">{% trans 'Log out' %}</a>
             {% endblock %}
         </div>
         {% endif %}

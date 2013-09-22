@@ -1,7 +1,8 @@
 {% extends "base_site.html" %}
 {% load i18n admin_static %}
 
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" \
+type="text/css" href="{% static "admin/css/dashboard.css" %}" />{% endblock %}
 
 {% block coltype %}colMS{% endblock %}
 
@@ -22,7 +23,8 @@
                 {% blocktrans  %}Main{% endblocktrans %}</a>
 		</caption>
 			<tr>
-			<th><a href="rentsystem/main/checkin">Check In</a> <br><br> Check Out</th>
+			<th><a href="/rentsystem/main/checkin">Check In</a> <br><br>
+				<a href="/rentsystem/main/available">Rooms Available</a> <br><br> Check Out</th>
             </tr>
         </table>
         </div>
@@ -34,7 +36,7 @@
                 {% blocktrans  %}Accounts{% endblocktrans %}</a>
 		</caption>
 			<tr>
-			<th>Collect Ammount <br><br> Ammount Not Recieved</th>
+			<th><a href="/rentsystem/main/payment">Collect Ammount</a> <br><br> Ammount Not Recieved</th>
             </tr>
         </table>
         </div>
@@ -47,7 +49,7 @@
                 {% blocktrans  %}Profile{% endblocktrans %}</a>
 		</caption>
 			<tr>
-			<th><a href="rentsystem/main/viewprofile">Search Profile</a> <br><br> Edit Profile</th>
+			<th><a href="/rentsystem/main/viewprofile">Search Profile</a> <br><br> Edit Profile</th>
             </tr>
         </table>
         </div>

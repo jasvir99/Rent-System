@@ -13,10 +13,10 @@ from django.db.models.signals import post_save
 #	Name=models.CharField(max_length=100)
 
 class Room(models.Model):
-	Id = models.IntegerField(primary_key=True)
+	Id = models.CharField(primary_key=True)
 	Type = models.IntegerField(max_length=2)
 	rent = models.IntegerField(max_length=100)
-	on_rent = models.IntegerField(max_length=2)
+	on_rent = models.CharField(max_length=2)
 	def __unicode__(self):
 		return self.Id
 
@@ -35,6 +35,7 @@ class RenterForm(ModelForm):
 		model = RenterDetails
 		exclude = ['photo']	
 		widgets = {
+		'room_id': TextInput(attrs={'size':10}),
 		'room' : TextInput(attrs={'size':100}),
 		'name' : TextInput(attrs={'size':50}),
 		'address' : TextInput(attrs={'size':100}),
@@ -45,9 +46,20 @@ class Accounts(models.Model):
 	renter_id = models.ForeignKey(RenterDetails)
 	ammount_paid = models.IntegerField(max_length=100)
 	balance = models.IntegerField(max_length=100)
+	electricity = models.IntegerField(max_length=100)
 	date_of_payment = models.DateField()
 	def __unicode__(self):
 		return self.renter_id
+
+class paymentForm(ModelForm):
+	class Meta:
+		model = Accounts
+		widgets = {
+		'renter_id': TextInput(attrs={'size':10}),
+		'electricity': TextInput(attrs={'size':10}),
+		'ammount_paid' : TextInput(attrs={'size':10}),
+		'balance' : TextInput(attrs={'size':10}),
+				}
 
 class Fixed_Charges(models.Model):
 	title = models.CharField(max_length=100)
