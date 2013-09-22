@@ -62,7 +62,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = '/usr/local/lib/python2.7/dist-packages/django/contrib/admin/media/'
+MEDIA_ROOT = '/home/jass/RentSystem/media/'
 STATIC_ROOT = '/home/jass/static/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a

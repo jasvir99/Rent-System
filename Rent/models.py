@@ -20,20 +20,20 @@ class Room(models.Model):
 	def __unicode__(self):
 		return self.Id
 
-class Renter(models.Model):
+class RenterDetails(models.Model):
 	room_id = models.ForeignKey(Room)
 	name = models.CharField(max_length=100)
 	address = models.CharField(max_length=200)
-	phone_no = models.CharField(max_length=50)
-	photo = models.CharField(max_length=50)
+	phone_no = models.CharField(max_length=9)
+	photo = models.FileField(upload_to='/documents/%Y/%m/%d')
 	start_date = models.DateField()
 	def __unicode__(self):
 		return self.name
 
 class RenterForm(ModelForm):
 	class Meta :
-		model = Renter
-		exclude= ['photo']	
+		model = RenterDetails
+		exclude = ['photo']	
 		widgets = {
 		'room' : TextInput(attrs={'size':100}),
 		'name' : TextInput(attrs={'size':50}),
@@ -42,7 +42,7 @@ class RenterForm(ModelForm):
                   }
 
 class Accounts(models.Model):
-	renter_id = models.ForeignKey(Renter)
+	renter_id = models.ForeignKey(RenterDetails)
 	ammount_paid = models.IntegerField(max_length=100)
 	balance = models.IntegerField(max_length=100)
 	date_of_payment = models.DateField()

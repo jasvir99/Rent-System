@@ -12,6 +12,10 @@
 <input type="submit" value="Submit"><br>
 You searched for "{{ query_string }}" and the results are listed below.
 <table border='1' class="fixed">
+<caption>
+            <aclass="section" title="search">
+                {% blocktrans  %}Results{% endblocktrans %}</a>
+		</caption>
 <tr>
 		<th>Sr.No </th>
 		<th>Name</th>
@@ -29,7 +33,7 @@ You searched for "{{ query_string }}" and the results are listed below.
       {% endfor %}
       </ul>
     {% else %}
-      <p>No clients found</p>
+      <p>Nothing found</p>
     {% endif %}
 </table>
 

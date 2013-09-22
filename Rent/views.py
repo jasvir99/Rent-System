@@ -6,6 +6,17 @@ from django.template import *
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.db.models import Max ,Q, Sum
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.sessions.models import Session
+from django.shortcuts import render
+from django.db.models import F
+from django import template
+from tagging.models import Tag, TaggedItem
+from django.core.mail import send_mail        
 
 def index(request):
 	if request.user.is_active == 1:
@@ -24,7 +35,7 @@ def checkIn(request):
 			address = cd['address']
 			phone_no = cd['phone_no']
 			start_date = cd['start_date']
-			pro = Renter(room_id = room_id,name = name, address = address, phone_no = phone_no,
+			pro = RenterDetails(room_id = room_id,name = name, address = address, phone_no = phone_no,
 			start_date = start_date)
 			pro.save()
 			return render_to_response('Rent/checkin_ok.html', context_instance=RequestContext(request))
@@ -44,7 +55,7 @@ def search(request):
 		aset = (
 	     	Q(address__icontains=addquery)
 		)
-		results = Renter.objects.filter(aset).filter(qset).\
+		results = RenterDetails.objects.filter(aset).filter(qset).\
 		distinct()
 	else:
 		results = []
@@ -52,3 +63,8 @@ def search(request):
 	return render_to_response("Rent/search.html", dict(temp.items() 
 	),context_instance=RequestContext(request))
 		
+def profile(request):
+	renter = RenterDetails.objects.filter(id=request.GET['id'])
+	temp = {'renter' : renter,}
+	return render_to_response('Rent/details.html',dict(temp.\
+	items()), context_instance=RequestContext(request))
